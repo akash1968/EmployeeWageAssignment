@@ -6,18 +6,24 @@ namespace UC1
     {
         static void Main(string[] args)
         {
-            int isPresent = Attendance();
-            if (isPresent == 0)
-                Console.WriteLine("Employee is Absent!");
+
+            int FULL_TIME = 1;
+            int empWagePerHour = 20;
+            int empHours = 0;
+            int totalWage = 0;
+            Random random = new Random();
+            int empCheck = random.Next(0, 2);
+            if (empCheck == FULL_TIME)
+            {
+                empHours = 8;
+            }
             else
-                Console.WriteLine("Employee is Present!");
+            {
+                empHours = 0;
+            }
+            totalWage = empHours * empWagePerHour;
+            Console.WriteLine("Total Wage.. " + totalWage);
+            Console.ReadKey();
         }
-
-        static int Attendance()
-        {
-            Random randObj = new Random();
-            return randObj.Next(0, 2);
-        }
-
     }
 }
