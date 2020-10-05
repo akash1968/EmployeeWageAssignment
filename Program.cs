@@ -10,10 +10,14 @@ namespace UC1
             const int FULL_TIME = 1;
             const int empWagePerHour = 20;
             int numberOfWorkingDaysInMonth = 20;
+            int workingDays = 0;
             int empHours = 0;
             int totalWagePerDay = 0;
             int totalWagePerMonth = 0;
-            for (int day = 0; day < numberOfWorkingDaysInMonth; day++)
+            int MAX_HRS_IN_MONTH = 100;
+            int totalEmpHours = 0;
+            while (totalEmpHours < MAX_HRS_IN_MONTH && workingDays < numberOfWorkingDaysInMonth)
+
             {
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
@@ -21,19 +25,23 @@ namespace UC1
                 {
                     case FULL_TIME:
                         empHours = 8;
+                        workingDays++;
                         break;
                     case PART_TIME:
                         empHours = 4;
+                        workingDays++;
                         break;
                     default:
                         empHours = 0;
                         break;
                 }
+                totalEmpHours = empHours + totalEmpHours;
                 totalWagePerDay = empHours * empWagePerHour;
                 totalWagePerMonth += totalWagePerDay;
-                Console.WriteLine("Total Wage.. " + totalWagePerDay);
+                Console.WriteLine("Total Wage per Day.. " + totalWagePerDay);
             }
             Console.WriteLine("Total Wage per month: " + totalWagePerMonth);
+            Console.WriteLine("Total Emp Hours:" + totalEmpHours);
             Console.ReadKey();
         }
     }
