@@ -1,48 +1,55 @@
 ﻿using System;
+using System.Net.NetworkInformation;
 
 namespace UC1
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            const int PART_TIME = 2;
-            const int FULL_TIME = 1;
-            const int empWagePerHour = 20;
-            int numberOfWorkingDaysInMonth = 20;
-            int workingDays = 0;
-            int empHours = 0;
-            int totalWagePerDay = 0;
-            int totalWagePerMonth = 0;
-            int MAX_HRS_IN_MONTH = 100;
-            int totalEmpHours = 0;
-            while (totalEmpHours < MAX_HRS_IN_MONTH && workingDays < numberOfWorkingDaysInMonth)
+        public const int PART_TIME = 1;
+        public const int FULL_TIME = 2;
+        public const int EMP_RATE_PERHOUR = 20;
+        public const int NUM_OF_WORKING_DAYS = 20;
+        public const int MAX_HOUR_IN_MONTH = 100;
 
+        public static float wageCalculation()
+        {
+            int empHour = 0, totalEmpHour = 0, totalWorkDay = 0;
+
+            while (totalEmpHour < MAX_HOUR_IN_MONTH && totalWorkDay < NUM_OF_WORKING_DAYS)
             {
-                Random random = new Random();
-                int empCheck = random.Next(0, 3);
-                switch (empCheck)
+                Random ran = new Random();
+                int empAttendance = ran.Next(0, 3);
+                if (empAttendance != 0)
                 {
-                    case FULL_TIME:
-                        empHours = 8;
-                        workingDays++;
-                        break;
+                    totalWorkDay++;
+                }
+
+                switch (empAttendance)
+                {
                     case PART_TIME:
-                        empHours = 4;
-                        workingDays++;
+                        empHour = 4;
+                        break;
+                    case FULL_TIME:
+                        empHour = 8;
                         break;
                     default:
-                        empHours = 0;
+                        empHour = 0;
                         break;
                 }
-                totalEmpHours = empHours + totalEmpHours;
-                totalWagePerDay = empHours * empWagePerHour;
-                totalWagePerMonth += totalWagePerDay;
-                Console.WriteLine("Total Wage per Day.. " + totalWagePerDay);
+
+                totalEmpHour += empHour;
+                Console.WriteLine("Number of Days = {0}, Employee Hours ={1}", totalWorkDay, totalEmpHour);
             }
-            Console.WriteLine("Total Wage per month: " + totalWagePerMonth);
-            Console.WriteLine("Total Emp Hours:" + totalEmpHours);
-            Console.ReadKey();
+
+            int totalEmployeeWage = totalEmpHour * EMP_RATE_PERHOUR;
+            Console.WriteLine("Total Wage of an Employee = {0}", totalEmployeeWage);
+            return totalEmployeeWage;
+        }
+
+
+        static void Main(string[] args)
+        {
+            wageCalculation();
         }
     }
 }
