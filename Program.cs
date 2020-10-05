@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Net.NetworkInformation;
 
-namespace UC1
+namespace UC8_EmployeeWageForMultipleCompanies
 {
     class Program
     {
         public const int PART_TIME = 1;
         public const int FULL_TIME = 2;
-        public const int EMP_RATE_PERHOUR = 20;
-        public const int NUM_OF_WORKING_DAYS = 20;
-        public const int MAX_HOUR_IN_MONTH = 100;
 
-        public static float wageCalculation()
+        public static float wageCalculation(string companyName, int employeeRatePerHour, int workingDays, int maxHours)
         {
             int empHour = 0, totalEmpHour = 0, totalWorkDay = 0;
 
-            while (totalEmpHour < MAX_HOUR_IN_MONTH && totalWorkDay < NUM_OF_WORKING_DAYS)
+            while (totalEmpHour < maxHours && totalWorkDay < workingDays)
             {
                 Random ran = new Random();
                 int empAttendance = ran.Next(0, 3);
@@ -41,15 +37,16 @@ namespace UC1
                 Console.WriteLine("Number of Days = {0}, Employee Hours ={1}", totalWorkDay, totalEmpHour);
             }
 
-            int totalEmployeeWage = totalEmpHour * EMP_RATE_PERHOUR;
-            Console.WriteLine("Total Wage of an Employee = {0}", totalEmployeeWage);
+            int totalEmployeeWage = totalEmpHour * employeeRatePerHour;
+            Console.WriteLine("Total Wage of an Employee for company = {0} is {1}", companyName, totalEmployeeWage);
             return totalEmployeeWage;
         }
 
 
         static void Main(string[] args)
         {
-            wageCalculation();
+            wageCalculation("Samsung", 20, 10, 100);
+            wageCalculation("Reliance", 100, 50, 200);
         }
     }
 }
