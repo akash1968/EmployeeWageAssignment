@@ -6,24 +6,29 @@ namespace UC1
     {
         static void Main(string[] args)
         {
-
-            int FULL_TIME = 1;
-            int empWagePerHour = 20;
+            int EMP_PART_TIME = 1;
+            int EMP_FULL_TIME = 2;
+            int EMP_RATE_PER_HR = 20;
             int empHours = 0;
-            int totalWage = 0;
+            int empWage = 0;
             Random random = new Random();
-            int empCheck = random.Next(0, 2);
-            if (empCheck == FULL_TIME)
+            int empCheck = random.Next(0, 3);
+            if (empCheck == EMP_FULL_TIME)
             {
                 empHours = 8;
+            }
+            else if (empCheck == EMP_PART_TIME)
+            {
+                empHours = 4;
             }
             else
             {
                 empHours = 0;
             }
-            totalWage = empHours * empWagePerHour;
-            Console.WriteLine("Total Wage.. " + totalWage);
+            empWage = empHours * EMP_RATE_PER_HR;
+            Console.WriteLine("Employee Wage per hour is.. " + empWage);
             Console.ReadKey();
         }
     }
 }
+
