@@ -6,28 +6,34 @@ namespace UC1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Use case 4");
-            const int EMP_PART_TIME = 1;
-            const int EMP_FULL_TIME = 2;
-            int EMP_RATE_PER_HR = 20;
+            const int PART_TIME = 2;
+            const int FULL_TIME = 1;
+            const int empWagePerHour = 20;
+            int numberOfWorkingDaysInMonth = 20;
             int empHours = 0;
-            int empWage = 0;
-            Random random = new Random();
-            int empCheck = random.Next(0, 3);
-            switch (empCheck)
+            int totalWagePerDay = 0;
+            int totalWagePerMonth = 0;
+            for (int day = 0; day < numberOfWorkingDaysInMonth; day++)
             {
-                case EMP_FULL_TIME:
-                    empHours = 8;
-                    break;
-                case EMP_PART_TIME:
-                    empHours = 4;
-                    break;
-                default:
-                    empHours = 0;
-                    break;
+                Random random = new Random();
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
+                {
+                    case FULL_TIME:
+                        empHours = 8;
+                        break;
+                    case PART_TIME:
+                        empHours = 4;
+                        break;
+                    default:
+                        empHours = 0;
+                        break;
+                }
+                totalWagePerDay = empHours * empWagePerHour;
+                totalWagePerMonth += totalWagePerDay;
+                Console.WriteLine("Total Wage.. " + totalWagePerDay);
             }
-            empWage = empHours * EMP_RATE_PER_HR;
-            Console.WriteLine("Employee Wage per hour is.. " + empWage);
+            Console.WriteLine("Total Wage per month: " + totalWagePerMonth);
             Console.ReadKey();
         }
     }
