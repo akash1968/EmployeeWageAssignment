@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace UC1
-
 {
     public interface IComputeEmpwage
     {
@@ -32,6 +31,14 @@ namespace UC1
         public int GetTotalEmpWage()
         {
             return this.totalEmpWage;
+        }
+        public void SetTotalEmpWage(int totalEmpWage)
+        {
+            this.totalEmpWage = totalEmpWage;
+        }
+        public string ToString()
+        {
+            return "The total employee wage for " + CompanyName + " is : " + totalEmpWage;
         }
 
     }
