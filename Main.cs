@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace UC1
         public const int is_part_time = 1;
         public const int is_full_time = 2;
 
-        public void CalculateEmpWages(String CompanyName, int EmpRatePerHour, int MaxNumberOfWrkinDays, int MaxHrPerMonth)
+        public ComputeEmpWage CalculateEmpWages(String CompanyName, int EmpRatePerHour, int MaxNumberOfWrkinDays, int MaxHrPerMonth)
         {
             List<ComputeEmpWage> list = new List<ComputeEmpWage>();
 
@@ -18,7 +19,7 @@ namespace UC1
             int totalWorkingDays = 0;
             int totalEmpHrs = 0;
             int dailyWage = 0;
-            Console.WriteLine(CompanyName + " ");
+
             while (totalEmpHrs <= MaxHrPerMonth && totalWorkingDays < MaxNumberOfWrkinDays)
             {
                 int empHrs = 0;
@@ -42,12 +43,13 @@ namespace UC1
                 }
                 ce.SetDailywage(dailyWage);
                 totalEmpHrs = totalEmpHrs + empHrs;
-                Console.WriteLine("Day: " + totalWorkingDays + " Emp Hrs : " + empHrs + " Daily Wage : " + dailyWage);
+                //Console.WriteLine("Day: " + totalWorkingDays + " Emp Hrs : " + empHrs+" Daily Wage : "+dailyWage);
             }
 
             int TotalEmpWage = totalEmpHrs * EmpRatePerHour;
             ce.SetTotalEmpWage(TotalEmpWage);
-            Console.WriteLine(ce.ToString());
+            return ce;
+            //Console.WriteLine(ce.ToString());
 
         }
 

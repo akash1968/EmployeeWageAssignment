@@ -7,10 +7,10 @@ namespace UC1
 {
     public interface IComputeEmpwage
     {
-        public void CalculateEmpWages(String CompanyName, int EmpRatePerHour, int MaxNumberOfWrkinDays, int MaxHrPerMonth);
+        public ComputeEmpWage CalculateEmpWages(string CompanyName, int EmpRatePerHour, int MaxNumberOfWrkinDays, int MaxHrPerMonth);
 
     }
-    class ComputeEmpWage
+    public class ComputeEmpWage
     {
         private String CompanyName;
         private int EmpRatePerHour;
@@ -47,10 +47,7 @@ namespace UC1
         {
             this.dailywage = dailywage;
         }
-        public string ToString()
-        {
-            return "The total employee wage for " + CompanyName + " is : " + totalEmpWage;
-        }
+
 
     }
 }
